@@ -9,7 +9,7 @@ while counter <= L:
     print(f'Введите стоимость за единицу товара {counter}')
     M = int(input('рублей:\n'))
     N = int(input('копеек:\n'))
-    coins = M*100 + N
+    coins = M * 100 + N
     summa = 0
     summa += coins * quantity
     M = summa // 100
