@@ -10,7 +10,7 @@
 str1 = input('Введите любое слово:\n')
 
 new_str = ''
-for element in str1:
+for element in str1.casefold():
     if element not in new_str:
         new_str += element
 

@@ -31,56 +31,19 @@ if len(str1) < 3:
 elif len(str1) > (10 ** 2) ** 2:
     print('Название компании слишком длинное!')
 else:
-    new_str = ''  # временная строка
-    counter = 0
-    most1 = ''
-    most2 = ''
-    most3 = ''
-    quantity1 = 0
-    quantity2 = 0
-    quantity3 = 0
-    temp1 = 0
-    temp_str1 = ''
-    temp2 = 0
-    temp_str2 = ''
-    while counter < len(str1):
-        if str1[counter] not in new_str and str1[counter] != ' ':
-            amount_elements = str1.count(str1[counter])
-            if amount_elements > quantity1:
-                temp1 = quantity1
-                temp_str1 = most1
-                quantity1 = amount_elements
-                most1 = str1[counter]
-                if temp1 > quantity2:
-                    temp2 = quantity2
-                    temp_str2 = most2
-                    quantity2 = temp1
-                    most2 = temp_str1
-                    if temp2 > quantity3:
-                        quantity3 = temp2
-                        most3 = temp_str2
-                else:
-                    if temp1 > quantity3:
-                        quantity3 = temp1
-                        most3 = temp_str1
-            else:
-                if amount_elements > quantity2:
-                    quantity2 = amount_elements
-                    most2 = str1[counter]
-                else:
-                    if amount_elements > quantity3:
-                        quantity3 = amount_elements
-                        most3 = str1[counter]
-            new_str += str1[counter]
-        counter += 1
-    print(f'Самая частая буква: {most1}, повторяется {quantity1} раз')
-    print(f'Самая частая буква № 2: {most2}, повторяется {quantity2} раз')
-    print(f'Самая частая буква № 3: {most3}, повторяется {quantity3} раз')
-    print(f'Ваш логотип: {most1 + most2 + most3}')
-    # отсортировать по алфавиту символы
-    # с одинаковым количеством повторений не получилось(
-    # Получился огромный код.
-    # По итогу, если какой-нибудь символ
-    # встречается одинаковое количество раз,
-    # то выводится тот символ,который
-    # встретился раньше
+    MyList = list(str1.strip())  # преобразую строку в список
+    temp = []
+    # новый список, отсортированы только буквы
+    [temp.append(x) for x in MyList if x.isalpha() is True]
+    # список, отсортированный по алфавиту
+    list_alphabet = sorted(temp)
+    # вторая сортировка по количеству вхождений
+    list_count = sorted(list_alphabet, key=list_alphabet.count, reverse=True)
+    # создаю словарь "буква:количество"
+    dictionary = {i: list_count.count(i) for i in list_count}
+    new_list = list(dictionary)
+    new_num = list(dictionary.values())
+    print(f'Самая частая буква: {new_list[0]}, повторяется {new_num[0]} раз')
+    print(f'Самая частая буква № 2: {new_list[1]}, повторяется {new_num[1]} раз')
+    print(f'Самая частая буква № 3: {new_list[2]} повторяется {new_num[2]} раз')
+    print(f'Ваш логотип: {new_list[0] + new_list[1] + new_list[2]}')
