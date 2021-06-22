@@ -1,4 +1,4 @@
-pieces = int(input('Введиите количество товара:\n'))
+pieces = int(input('Введите количество товара:\n'))
 rubl = int(input('Стоимость товара: рублей\n'))
 kopek = int(input('Стоимость товара: копеек\n'))
 cost = pieces * (100 * rubl + kopek)
