@@ -47,5 +47,6 @@ else:
           f' повторяется {new_num[0]} раз')
     print(f'Самая частая буква № 2: {new_list[1]}, '
           f'повторяется {new_num[1]} раз')
-    print(f'Самая частая буква № 3: {new_list[2]} повторяется {new_num[2]} раз')
+    print(f'Самая частая буква № 3: {new_list[2]}'
+          f' повторяется {new_num[2]} раз')
     print(f'Ваш логотип: {new_list[0] + new_list[1] + new_list[2]}')
