@@ -4,7 +4,7 @@ cort1 = tuple(list1)
 print(type(list1), list1)
 print(type(cort1), cort1)
 
-# 2
+# 22
 cort1 = ('a', 'b', 'c')
 list1 = [cort1]
 print(type(cort1), cort1)
