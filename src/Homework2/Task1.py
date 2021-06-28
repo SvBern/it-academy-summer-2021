@@ -1,5 +1,0 @@
-pieces = int(input('Введите количество товара:\n'))
-rubl = int(input('Стоимость товара: рублей\n'))
-kopek = int(input('Стоимость товара: копеек\n'))
-cost = pieces * (100 * rubl + kopek)
-print('Общая сумма покупки:', cost // 100, 'руб', cost % 100, 'коп')
