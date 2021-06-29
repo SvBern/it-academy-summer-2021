@@ -6,10 +6,10 @@
 # Выходные данные - количество пар.
 # Важно: 1 1 1 - это 3 пары, 1 1 1 1 - это 6 пар
 
-list1 = list(input('Введите любые числа через пробел\n'))
+str1 = input('Введите любые числа через пробел\n')
 
 temp = []
-[temp.append(element) for element in list1 if element != ' ']
+[temp.append(element) for element in str1.split()]
 
 counter = 0
 for item in range(len(temp)):
