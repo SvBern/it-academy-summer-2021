@@ -27,14 +27,14 @@
 count_country = int(input('Введите количество стран: \n'))
 
 country_city_dict = {}
-for counter in range(1, count_country+1):
+for counter in range(1, count_country + 1):
     country = input('Введите через пробелы страну и её города: \n').split()
     country_city_dict |= dict.fromkeys(country[1:], country[0])
 
 count_city = int(input('Введите количество проверяемых городов: \n'))
 
 country_list = ""
-for counter in range(1, count_city+1):
+for counter in range(1, count_city + 1):
     name_city = input('Введите название города:  \n')
     country_list += country_city_dict[name_city] + '\n'
 

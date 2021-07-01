@@ -4,7 +4,8 @@
 # которые знает хотя бы один из школьников.
 # Входные данные
 # Первая строка входных данных содержит количество школьников N.
-# Далее идет N чисел Mi, после каждого из чисел идет Mi строк, содержащих названия языков,
+# Далее идет N чисел Mi, после каждого из чисел идет Mi строк,
+# содержащих названия языков,
 # которые знает i-й школьник.
 # Пример входных данных: 3          # N количество школьников
 # 2          # M1 количество языков первого школьника
@@ -28,7 +29,8 @@ count_children = int(input('Введите количество школьник
 
 list_of_languages = []
 for children in range(1, count_children + 1):
-    count_languages = int(input(f'Введите кол-во языков, которыми владеет ученик {children}: \n'))
+    count_languages = int(input(f'Введите кол-во языков,'
+                                f' которыми владеет ученик {children}: \n'))
     name_language = set()
     for language in range(count_languages):
         name_language.add(input('Введите название языка: \n'))
@@ -40,6 +42,7 @@ for language_name in common_languages:
     print(language_name)
 
 diff_languages = set.difference(*list_of_languages)
-print('Языков, которыми владеет только один человек: ', len(diff_languages), 'шт')
+print('Языков, которыми владеет только один человек: ',
+      len(diff_languages), 'шт')
 for language_name in diff_languages:
     print(language_name)
