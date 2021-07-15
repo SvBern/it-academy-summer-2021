@@ -29,8 +29,8 @@ def deleting_repeats():
 
 
 def counter_letters():
-    """
-    Returns the number of uppercase and lowercase
+    """Returns the number of uppercase and lowercase
+
     letters from the entered string
     """
     str1 = input('Введите любую строку латиницей\n')
@@ -68,9 +68,10 @@ def fibonacci():
 
 
 def palindrome():
-    """Palindrome"
+    """Palindrome
 
-    Determines if the entered number (num) is a palindrome"""
+    Determines if the entered number (num) is a palindrome
+    """
     num = int(input('Введите число:\n'))
     temporarily = num
     reverse = 0
@@ -126,10 +127,10 @@ def numbers():
 
 
 def middle_of_a_word():
-    """
+    """Returns the middle character of a word
 
-    Returns the middle character of a word if the word
-    has an even number of characters, two middle characters
+    if the word has an even number of characters,
+    two middle characters
     if the word has an odd number of characters
     """
     str1 = input('Введите любое слово\n')
