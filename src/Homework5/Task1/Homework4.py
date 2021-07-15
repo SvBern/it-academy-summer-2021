@@ -123,6 +123,8 @@ def do_list_of_languages():
           len(at_least_one), 'шт')
     for language_name in at_least_one:
         print(language_name)
+
+
 def diff_words():
     """
 

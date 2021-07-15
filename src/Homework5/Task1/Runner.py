@@ -13,7 +13,7 @@ import Homework4
 
 
 def runner(*args, **kwargs):
-    if not args or kwargs:
+    if not args and kwargs:
         print('Будут выполнены все функции по порядку: ')
         Homework2.count_cost_goods()
         Homework2.more_long_word()

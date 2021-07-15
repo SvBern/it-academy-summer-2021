@@ -222,7 +222,8 @@ def logo():
         # список, отсортированный по алфавиту
         list_alphabet = sorted(temp)
         # вторая сортировка по количеству вхождений
-        list_count = sorted(list_alphabet, key=list_alphabet.count, reverse=True)
+        list_count = sorted(list_alphabet, key=list_alphabet.count,
+                            reverse=True)
         # создаю словарь "буква:количество"
         dictionary = {i: list_count.count(i) for i in list_count}
         new_list = list(dictionary)
