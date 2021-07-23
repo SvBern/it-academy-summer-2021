@@ -1,11 +1,9 @@
-def fizz_buzz():
+def fizz_buzz(num1=1, num2=101):
     """Fizz/Buzz/FizzBuzz
-
     В заданном числовом промежутке находит числа,
     кратные 3/5/15 и заменяет их
     словами Fizz/Buzz/FizzBuzz соответственно
     """
-    num1, num2 = 1, 101
     list1 = []
     for i in range(num1, num2):
         if i % 15 == 0:
@@ -20,20 +18,17 @@ def fizz_buzz():
         print(element)
 
 
-def addition_of_letters():
+def addition_of_letters(str1='ab', str2='bcd'):
     """Используйте генератор списков,
-
     чтобы получить следующий:
     ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].)
     """
-    str1, str2 = 'ab', 'bcd'
     list1 = [x + y for x in str1 for y in str2]
     print(list1)
 
 
 def cut_syllables():
     """Используйте на предыдущий список slice
-
     чтобы получить следующий: ['ab', 'ad', 'bc'].
     """
     list1 = ['ab', 'ac', 'ad', 'bb', 'bc', 'bd']
@@ -41,19 +36,16 @@ def cut_syllables():
     print(list2)
 
 
-def num_letter():
+def num_letter(str_letter='a'):
     """Используйте генератор списков,
-
     чтобы получить следующий ['1a', '2a', '3a', '4a'].
     """
-    str_letter = 'a'
     list3 = [str(x) + str_letter for x in range(5) if x != 0]
     print(list3)
 
 
 def cut_element():
     """Одной строкой удалите элемент '2a'
-
     из прошлого списка и напечатайте его.
     """
     list4 = ['1a', '2a', '3a', '4a']
@@ -62,7 +54,6 @@ def cut_element():
 
 def copy_list():
     """Скопируйте список и добавьте в него элемент
-
     '2a' так, чтобы в исходном списке этого элемента
     не было.
     """
@@ -75,7 +66,6 @@ def copy_list():
 
 def do_list_and_tuple():
     """Создайте список ['a', 'b', 'c']
-
     и сделайте из него кортеж.
     """
     list_1 = ['a', 'b', 'c']
@@ -86,7 +76,6 @@ def do_list_and_tuple():
 
 def do_tuple_and_list():
     """Создайте кортеж ('a', 'b', 'c') и
-
     сделайте из него список
     """
     cort2 = ('a', 'b', 'c')
@@ -97,7 +86,6 @@ def do_tuple_and_list():
 
 def value_of_var():
     """Присвоение значений (a, b, c)
-
     переменным одной строкой
     a = 'a', b=2, c=’python’
     """
@@ -107,7 +95,6 @@ def value_of_var():
 
 def output_numbers():
     """Создает кортеж из одного элемента,
-
     при итерировании
     по этому элементу последовательно выводятся значения 1, 2, 3.
     len() исходного кортежа возвращает 1.
@@ -118,9 +105,8 @@ def output_numbers():
         print(i)
 
 
-def couple_of_element():
+def couple_of_element(list1='1 1 1'):
     """Пары элементов
-
     Дан список чисел. Посчитайте, сколько в нем пар элементов,
     равных друг другу. Считается, что любые два элемента,
     равные друг другу образуют одну пару, которую необходимо посчитать.
@@ -128,10 +114,9 @@ def couple_of_element():
     Выходные данные - количество пар.
     Важно: 1 1 1 - это 3 пары, 1 1 1 1 - это 6 пар
     """
-    list1 = list(input('Введите любые числа через пробел\n'))
+    list1 = list(list1)
     temp = []
     [temp.append(element) for element in list1 if element != ' ']
-
     counter = 0
     for item in range(len(temp)):
         for item1 in range(item + 1, len(temp)):
@@ -140,14 +125,13 @@ def couple_of_element():
     print(counter, 'пар чисел в этом списке')
 
 
-def unique_elements():
+def unique_elements(list_elem='Уникальные элементы в списке'):
     """Уникальные элементы в списке
-
     Дан список. Выведите те его элементы, которые встречаются
     в списке только один раз. Элементы нужно выводить в том порядке,
     в котором они встречаются в списке.
     """
-    list_elem = list(input('Введите любые символы\n'))
+    list_elem = list(list_elem)
     temp_list = []
     for element in list_elem:
         if list_elem.count(element) == 1:
@@ -157,7 +141,6 @@ def unique_elements():
 
 def sorting_numbers():
     """Упорядоченный список.
-
     Дан список целых чисел. Требуется переместить все ненулевые
     элементы в левую часть списка, не меняя их порядок,
     а все нули - в правую часть.

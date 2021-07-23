@@ -1,26 +1,21 @@
-def count_cost_goods():
+def count_cost_goods(pieces=3, rubl=22, kopek=30):
     """The total amount of purchases
-
     Returns the total amount of purchases after entering
     the quantity of goods (pieces) and prices in rubles and
     """
-    pieces = int(input('Введите количество товара:\n'))
-    rubl = int(input('Стоимость товара: рублей\n'))
-    kopek = int(input('Стоимость товара: копеек\n'))
+    pieces, rubl, kopek = int(pieces), int(rubl), int(kopek)
     cost = pieces * (100 * rubl + kopek)
     print('Общая сумма покупки:', cost // 100, 'руб', cost % 100, 'коп')
 
 
-def more_long_word():
+def more_long_word(sentence='Returns the longest word in a sentence'):
     """Returns the longest word (long_word) in a sentence"""
-    sentence = input('Введите предложение\n')
     long_word = max(sentence.split(), key=len)
     print("Самое длинное слово в предложении: ", long_word)
 
 
-def deleting_repeats():
+def deleting_repeats(str1='Returns a string with repetitions removed'):
     """Returns a string with repetitions removed"""
-    str1 = input('Введите любую строку:')
     new_str = ''
     for element in str1:
         if element not in new_str and element != ' ':
@@ -28,12 +23,10 @@ def deleting_repeats():
     print(new_str)
 
 
-def counter_letters():
+def counter_letters(str1='Returns the number of uppercase and lowercase'):
     """Returns the number of uppercase and lowercase
-
     letters from the entered string
     """
-    str1 = input('Введите любую строку латиницей\n')
     low_letter = 0
     up_letter = 0
     for element in str1:
@@ -45,14 +38,11 @@ def counter_letters():
     print('Количество прописных букв:', up_letter)
 
 
-def fibonacci():
+def fibonacci(num=5):
     """the Fibonacci number
-
     Returns the Fibonacci number with
     the given ordinal
     """
-    num = int(input('Введите порядковый номер'
-                    ' искомого числа Фибоначчи:\n'))
     if num == 1:
         fib_2 = 0
     else:
@@ -67,12 +57,10 @@ def fibonacci():
     print(f'Значение числа Фибоначчи с порядковым номером {num}:', fib_2)
 
 
-def palindrome():
+def palindrome(num=2552):
     """Palindrome
-
     Determines if the entered number (num) is a palindrome
     """
-    num = int(input('Введите число:\n'))
     temporarily = num
     reverse = 0
     while num > 0:
@@ -85,11 +73,8 @@ def palindrome():
         print('Это не палиндром!')
 
 
-def area_of_a_triangle():
+def area_of_a_triangle(a=3, b=4, c=5):
     """Determines the existence of a triangle and its area"""
-    a = int(input('Введите сторону а:\n'))
-    b = int(input('Введите сторону b:\n'))
-    c = int(input('Введите сторону c:\n'))
     if a + b > c and a + c > b and c + b > a:
         p = (a + b + c) / 2
         area_tr = (p * (p - a) * (p - b) * (p - c)) ** 0.5
@@ -99,9 +84,8 @@ def area_of_a_triangle():
         print('Это не треугольник!')
 
 
-def numbers():
+def numbers(num=24):
     """Task/
-
     Given an integer, , perform the following conditional actions:
     If  is odd, print Weird
     If  is even and in the inclusive range of  2 to 5, print Not Weird
@@ -113,7 +97,6 @@ def numbers():
     Output Format
     Print Weird if the number is weird. Otherwise, print Not Weird.
     """
-    num = int(input('Enter a number between 1 and 100 inclusive\n'))
     if 1 <= num <= 100:
         if num % 2 == 1:
             print('Weird')
@@ -126,14 +109,12 @@ def numbers():
         print('Bad num')
 
 
-def middle_of_a_word():
+def middle_of_a_word(str1='middle'):
     """Returns the middle character of a word
-
     if the word has an even number of characters,
     two middle characters
     if the word has an odd number of characters
     """
-    str1 = input('Введите любое слово\n')
     counter = int(len(str1))
     if counter % 2 == 0:
         middle = counter / 2
@@ -144,15 +125,13 @@ def middle_of_a_word():
         print(str1[int(middle_element)])
 
 
-def determine_the_century():
+def determine_the_century(year=2021):
     """Век из года
-
     Первые пролеты века от года 1 до и включая 100 года ,
     второй - от года до 101 включительно 200 года , и т.д.
     Задача :
     Учитывая год, верните век, в котором он находится.
     """
-    year = int(input('Введите год:\n'))
     if year > 0:
         ten = year // 100
         century = ten + 1
@@ -161,9 +140,8 @@ def determine_the_century():
         print('Вы ввели неправильное значение')
 
 
-def isogram():
+def isogram(str1='функция'):
     """Изограммы
-
     Изограмма - это слово, в котором
     нет повторяющихся букв,
     последовательных или непоследовательных.
@@ -172,7 +150,6 @@ def isogram():
     Предположим, что пустая строка является изограммой.
     Игнорировать регистр букв.
     """
-    str1 = input('Введите любое слово:\n')
     new_str = ''
     for element in str1.casefold():
         if element not in new_str:
@@ -183,9 +160,8 @@ def isogram():
         print('Это не изограмма!')
 
 
-def logo():
+def logo(str1='new international brand'):
     """Недавно открытый международный бренд решил создать
-
     логотип своей компании на трех наиболее
     распространенных символах в названии компании.
     Сейчас они пробуют различные комбинации
@@ -210,7 +186,6 @@ def logo():
     Если количество вхождений такое же,
     отсортируйте символы в алфавитном порядке
     """
-    str1 = input('Введите название компании строчными буквами\n')
     if len(str1) < 3:
         print('Название компании слишком короткое!')
     elif len(str1) > (10 ** 2) ** 2:
