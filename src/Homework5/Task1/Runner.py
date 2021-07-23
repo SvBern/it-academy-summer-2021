@@ -7,10 +7,11 @@ runner(‘func_name’) – вызывается только функцию fun
 runner(‘func’, ‘func1’...) - вызывает все переданные функции
 """
 from inspect import getmembers
-from inspect import isfunction
 import homework2
 import homework3
 import homework4
+from inspect import isfunction
+
 
 list_func2 = [elem[0] for elem in getmembers(homework2) if isfunction(elem[1])]
 list_func3 = [elem[0] for elem in getmembers(homework3) if isfunction(elem[1])]
