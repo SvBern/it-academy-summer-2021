@@ -6,8 +6,8 @@ runner() – все фукнции вызываются по очереди
 runner(‘func_name’) – вызывается только функцию func_name..
 runner(‘func’, ‘func1’...) - вызывает все переданные функции
 """
-from inspect import isfunction
 from inspect import getmembers
+from inspect import isfunction
 import homework2
 import homework3
 import homework4
