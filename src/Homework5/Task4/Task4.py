@@ -45,8 +45,4 @@ try:
             json.dump(year_films, year, indent='\n')
 except FileExistsError:
     print("Файл не существует")
-finally:
-    rating_list.close()
-    top250.close()
-    ratings_top250.close()
-    year.close()
+
