@@ -9,7 +9,8 @@ def cubed_of_num():
 
 
 def check_country(**kwargs):
-    """Города..
+    """Города.
+
     Дан список стран и городов каждой страны. Затем даны названия городов.
     Для каждого города укажите, в какой стране он находится.
     Входные данные:
@@ -36,7 +37,8 @@ def check_country(**kwargs):
     Russia
     """
     if not kwargs:
-        kwargs = ['Russia Moscow Petersburg Novgorod Kaluga', 'Ukraine Kiev Donetsk Odessa']
+        kwargs = ['Russia Moscow Petersburg Novgorod Kaluga',
+                  'Ukraine Kiev Donetsk Odessa']
     country_city_dict = {}
     for item in kwargs:
         country = item.split()
@@ -50,7 +52,8 @@ def check_country(**kwargs):
 
 
 def count_diff_num(str1='1234', str2='12356'):
-    """Даны два списка чисел. Посчитайте, сколько различных чисел
+    """
+    Даны два списка чисел. Посчитайте, сколько различных чисел
     содержится одновременно как в первом списке, так и во втором.
     """
     print(len(set(str1.split()) | set(str2.split())))
@@ -113,7 +116,8 @@ def pupils_languages(**kwargs):
 
 
 def diff_words(text='Во входной строке записан текст.'):
-    """Во входной строке записан текст.
+    """
+    Во входной строке записан текст.
     Словом считается последовательность
     непробельных символов идущих подряд, слова разделены одним
     или большим числом пробелов или символами конца строки.
@@ -129,6 +133,7 @@ def diff_words(text='Во входной строке записан текст.
 
 def euclidean_algorithm(num1=20, num2=16):
     """Оглянемся назад. Числа.
+
     Даны два натуральных числа. Вычислите их наибольший общий делитель
     при помощи алгоритма Евклида (мы не знаем функции и рекурсию).
     """

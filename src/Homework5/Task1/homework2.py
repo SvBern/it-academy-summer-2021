@@ -1,5 +1,6 @@
 def count_cost_goods(pieces=3, rubl=22, kopek=30):
     """The total amount of purchases
+
     Returns the total amount of purchases after entering
     the quantity of goods (pieces) and prices in rubles and
     """
@@ -25,6 +26,7 @@ def deleting_repeats(str1='Returns a string with repetitions removed'):
 
 def counter_letters(str1='Returns the number of uppercase and lowercase'):
     """Returns the number of uppercase and lowercase
+
     letters from the entered string
     """
     low_letter = 0
@@ -40,6 +42,7 @@ def counter_letters(str1='Returns the number of uppercase and lowercase'):
 
 def fibonacci(num=5):
     """the Fibonacci number
+
     Returns the Fibonacci number with
     the given ordinal
     """
@@ -59,6 +62,7 @@ def fibonacci(num=5):
 
 def palindrome(num=2552):
     """Palindrome
+
     Determines if the entered number (num) is a palindrome
     """
     temporarily = num
@@ -86,6 +90,7 @@ def area_of_a_triangle(a=3, b=4, c=5):
 
 def numbers(num=24):
     """Task/
+
     Given an integer, , perform the following conditional actions:
     If  is odd, print Weird
     If  is even and in the inclusive range of  2 to 5, print Not Weird
@@ -111,6 +116,7 @@ def numbers(num=24):
 
 def middle_of_a_word(str1='middle'):
     """Returns the middle character of a word
+
     if the word has an even number of characters,
     two middle characters
     if the word has an odd number of characters
@@ -127,6 +133,7 @@ def middle_of_a_word(str1='middle'):
 
 def determine_the_century(year=2021):
     """Век из года
+
     Первые пролеты века от года 1 до и включая 100 года ,
     второй - от года до 101 включительно 200 года , и т.д.
     Задача :
@@ -142,6 +149,7 @@ def determine_the_century(year=2021):
 
 def isogram(str1='функция'):
     """Изограммы
+
     Изограмма - это слово, в котором
     нет повторяющихся букв,
     последовательных или непоследовательных.
@@ -162,6 +170,7 @@ def isogram(str1='функция'):
 
 def logo(str1='new international brand'):
     """Недавно открытый международный бренд решил создать
+
     логотип своей компании на трех наиболее
     распространенных символах в названии компании.
     Сейчас они пробуют различные комбинации
