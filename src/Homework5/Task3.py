@@ -25,7 +25,7 @@ def get_ranges(list1):
         else:
             final_list.append(str(item[0]))
     for i in final_list[0:-1]:
-        print(i, end=",")
+        print(i, end=", ")
     print(final_list[-1])
 
 
