@@ -25,8 +25,9 @@ def deleting_repeats(str1='Returns a string with repetitions removed'):
 
 
 def counter_letters(str1='Returns the number of uppercase and lowercase'):
-    """Returns the number of uppercase and lowercase
+    """Returns the number
 
+    Returns the number of uppercase and lowercase
     letters from the entered string
     """
     low_letter = 0
@@ -115,8 +116,9 @@ def numbers(num=24):
 
 
 def middle_of_a_word(str1='middle'):
-    """Returns the middle character of a word
+    """Returns the middle character
 
+    Returns the middle character of a word
     if the word has an even number of characters,
     two middle characters
     if the word has an odd number of characters
@@ -169,8 +171,9 @@ def isogram(str1='функция'):
 
 
 def logo(str1='new international brand'):
-    """Недавно открытый международный бренд решил создать
+    """Логотип
 
+    Недавно открытый международный бренд решил создать
     логотип своей компании на трех наиболее
     распространенных символах в названии компании.
     Сейчас они пробуют различные комбинации
