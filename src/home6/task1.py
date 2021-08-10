@@ -46,8 +46,8 @@ class CreditAccountOwners(AccountOwners):
         self.amount_of_credit = amount_credit
 
     def calculation_fees(self):
-        return round((((self.amount_of_credit / 100)
-                       * self.interest_rate) / 365) * 30)
+        return round((((self.amount_of_credit / 100
+                        * self.interest_rate) / 365) * 30))
 
 
 class DebitWithCashbackOwners(DebitAccountOwners):
