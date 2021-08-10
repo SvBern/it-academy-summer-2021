@@ -19,8 +19,8 @@ class Test(unittest.TestCase):
     )
     @ddt.unpack
     def test_1(self, input_data, expected):
-        """
-        Тест на правильную работу:
+        """Тест на правильную работу:
+
         ввод двух различных списков, пустой список
         """
         result = h3_task6.sorting_numbers(input_data)

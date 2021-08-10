@@ -22,8 +22,8 @@ class Test(unittest.TestCase):
               )
     @ddt.unpack
     def test_2(self, input_data, expected):
-        """
-        Тест на непр.работу: ошибка при вводе
+        """Тест на непр.работу: ошибка при вводе
+
         числа, списка, строки без букв
         """
         with self.assertRaises(expected):

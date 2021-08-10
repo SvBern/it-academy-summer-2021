@@ -40,10 +40,10 @@ class CreditAccountOwners(AccountOwners):
     """Класс для счета *кредит* с расчетом платы банку"""
     type_account = 'кредит'
 
-    def __init__(self, name, account_num, interest_rate, amount_of_credit):
+    def __init__(self, name, account_num, interest_rate, amount_credit):
         super().__init__(name, account_num)
         self.interest_rate = interest_rate
-        self.amount_of_credit = amount_of_credit
+        self.amount_of_credit = amount_credit
 
     def calculation_fees(self):
         return round((((self.amount_of_credit / 100)
@@ -85,8 +85,8 @@ class SMSMixin:
 
 
 class IndividualWithCard(DebitWithCashbackOwners, SMSMixin):
-    """
-    Класс для физического лица, открывшего депозит
+    """Класс для физического лица, открывшего депозит
+
     с кешбеком с выпуском карты(для примера)
     """
 
@@ -106,24 +106,29 @@ class IndividualWithCard(DebitWithCashbackOwners, SMSMixin):
 
 
 class LegalEntityWithCard(CreditAccountOwners, SMSMixin):
-    """Класс для юрлица, открывшего кредитный счет с выпуском карты (для примера)"""
+    """Класс для юрлица, открывшего кредитный счет
 
-    def __init__(self, name, account_num, interest_rate, amount_of_credit, sum):
-        super().__init__(name, account_num, interest_rate, amount_of_credit)
+    с выпуском карты (для примера)
+    """
+
+    def __init__(self, name, account_num, interest_rate, amount_credit, sum):
+        super().__init__(name, account_num, interest_rate, amount_credit)
         self.sum = sum
 
     def card_issue(self, type_of_card):
-        print(f'{self.name} выпустил карту {type_of_card} к счету {self.account_num}')
+        print(f'{self.name} выпустил карту {type_of_card}'
+              f' к счету {self.account_num}')
         SMSMixin.send_sms()
 
     def withdraw_money(self):
-        print(f'{self.name} перечислил зарплатный фонд на сумму {self.sum} руб.'
+        print(f'{self.name} перечислил зарплатный фонд'
+              f' на сумму {self.sum} руб.'
               f' со счета {self.account_num}')
 
 
 def calculation_fees(account_owners):
-    """
-    Функция формирует список клиетов с номерами счетов,
+    """Функция формирует список клиетов с номерами счетов,
+
     типами счетов и платой за обслуживание
     """
     total = 0
@@ -156,7 +161,7 @@ def spent_money(card_holders):
 
 debit_account_owner = DebitAccountOwners('Иван Иванов', '123456', 10)
 credit_account_owner = CreditAccountOwners('Петр Петров', '789012', 10, 50000)
-with_cashback_owner = DebitWithCashbackOwners('Сергей Сергеев', '102938', 10, 2)
+with_cashback_own = DebitWithCashbackOwners('Сергей Сергеев', '102938', 10, 2)
 cell_rent = CellRent('Сидор Сидоров', '22')
 individual = IndividualWithCard('Николай Николаев', '222222', 10, 2, 5)
 legal_entity = LegalEntityWithCard('ООО "Восход"', '333333', 5, 10000, 1500)
@@ -164,7 +169,7 @@ legal_entity = LegalEntityWithCard('ООО "Восход"', '333333', 5, 10000, 
 calculation_fees([
     debit_account_owner,
     credit_account_owner,
-    with_cashback_owner,
+    with_cashback_own,
     cell_rent,
     individual,
     legal_entity])
