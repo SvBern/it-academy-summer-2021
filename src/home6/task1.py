@@ -81,7 +81,7 @@ class SMSMixin:
 
     @staticmethod
     def send_sms():
-        print(f'Клиенту отправлено уведомление об операции')
+        print('Клиенту отправлено уведомление об операции')
 
 
 class IndividualWithCard(DebitWithCashbackOwners, SMSMixin):
