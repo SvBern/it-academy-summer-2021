@@ -29,7 +29,7 @@ class TestInput(unittest.TestCase):
         (123, TypeError),
         ([1, 2, 2, 3], AttributeError),
         ('1231123', IndexError),
-        )
+    )
     @ddt.unpack
     def test_input_negativ(self, input_data, expected):
         """Тест на неправ.работу: ошибка при вводе
