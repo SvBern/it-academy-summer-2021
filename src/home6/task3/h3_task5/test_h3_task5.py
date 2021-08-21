@@ -32,7 +32,7 @@ class TestInput(unittest.TestCase):
     )
     @ddt.unpack
     def test_input_negativ(self, input_data, expected):
-        """Тест на различные варианты ввода некорректных данных"""
+        """Тест на различные варианты ввода некорректных   данных"""
         with self.assertRaises(expected):
             h3_task5.unique_elements(input_data)
 

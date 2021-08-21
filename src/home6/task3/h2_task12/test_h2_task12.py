@@ -32,7 +32,7 @@ class TestInput(unittest.TestCase):
         )
     @ddt.unpack
     def test_input_negativ(self, input_data, expected):
-        """Тест на непр.работу: ошибка при вводе
+        """Тест на неправ.работу: ошибка при вводе
 
         числа, списка, строки без букв
         """

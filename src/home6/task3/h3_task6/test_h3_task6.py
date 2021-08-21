@@ -34,7 +34,7 @@ class TestInput(unittest.TestCase):
     )
     @ddt.unpack
     def test_input_negativ(self, input_data, expected):
-        """Тест на отрицательный результат: вводится число, сет"""
+        """Тест на отрицательныйй результат: вводится число, сет"""
         with self.assertRaises(expected):
             h3_task6.sorting_numbers(input_data)
 
