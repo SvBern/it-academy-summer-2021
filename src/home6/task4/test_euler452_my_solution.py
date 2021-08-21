@@ -5,6 +5,7 @@ import unittest
 
 @ddt.ddt
 class TestInput(unittest.TestCase):
+    """Класс тестирует правильность вводимых данных"""
     @ddt.data(
         (2, 2, 3),
         (3, 3, 7),
@@ -27,7 +28,10 @@ class TestInput(unittest.TestCase):
     )
     @ddt.unpack
     def test_input_negativ(self, input_data1, input_data2, expected):
-        """Тест на отрицательный результат"""
+        """Тест на отрицательный результат
+
+        Вводятся различные варианты неверных данных
+        """
         with self.assertRaises(expected):
             euler452_my_solution.euler_452(input_data1, input_data2)
 

@@ -8,9 +8,9 @@ F(106, 106) mod 1 234 567 891 = 252903833.
 ___________________________________________
 Обобщите указанную задачу на свое усмотрение, решите ее, покройте тестами
 """
-import itertools
 from functools import lru_cache
 from functools import reduce
+import itertools
 
 
 @lru_cache(maxsize=None)
