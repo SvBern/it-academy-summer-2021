@@ -23,13 +23,14 @@ def decor(n):
             nonlocal n
             if n != 0:
                 try:
-                    return func1(*args, **kwargs)
-                except ZeroDivisionError:
-                    print('Было введено неверное значение')
+                    result = func1(*args, **kwargs)
                     n -= 1
+                    return result
+                except Exception:
+                    print('Было введено неверное значение')
             else:
-                raise TooManyErrors('Максимальное количество'
-                                    ' неправильных попыток достигнуто!')
+                raise TooManyErrors('Максимальное количество '
+                                    'возможных попыток достигнуто!')
 
         return called
 
@@ -43,6 +44,8 @@ def sum(a, b):
 
 sum(10, 5)
 sum(10, 0)
+sum(10, 0)
+sum(10, 0)
 sum(10, 2)
-sum(10, 0)
-sum(10, 0)
+sum(10, 1)
+sum(10, 2)

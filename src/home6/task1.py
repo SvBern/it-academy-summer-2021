@@ -16,7 +16,13 @@
 
 
 class AccountOwners:
-    """Общий класс для банковского счета"""
+    """Общий класс для учета владельца банковского счета.
+
+    Атрибут класса: type_account - тип аккаунта (str)
+    Конструктор принимает:
+    name - ФИО клиента (str);
+    account_num - номер счета (str)
+    """
     type_account = None
 
     def __init__(self, name, account_num):
@@ -25,7 +31,15 @@ class AccountOwners:
 
 
 class DebitAccountOwners(AccountOwners):
-    """Класс счета *депозит* с расчетом платы банку"""
+    """Класс владельца счета *депозит* с расчетом платы банку
+
+    Конструктор принимает:
+     - Унаследовано от класса AccountOwners:
+    name - ФИО клиента (str);
+    account_num - номер счета (str)
+    - Добавлено:
+    monthly_fee - плата за обслуживание счета в месяц (int)
+    """
     type_account = 'депозит'
 
     def __init__(self, name, account_num, monthly_fee):
@@ -33,11 +47,21 @@ class DebitAccountOwners(AccountOwners):
         self.monthly_fee = monthly_fee
 
     def calculation_fees(self):
+        """Метод возвращает сумму платы за обслуживание счета"""
         return self.monthly_fee
 
 
 class CreditAccountOwners(AccountOwners):
-    """Класс для счета *кредит* с расчетом платы банку"""
+    """Класс для владельца счета *кредит* с расчетом платы банку
+
+    Конструктор принимает:
+     - Унаследовано от класса AccountOwners:
+    name - ФИО клиента (str);
+    account_num - номер счета (str)
+    - Добавлено:
+    interest_rate - процент за пользование кредитом (int)
+    amount_credit - сумма кредита (int)
+    """
     type_account = 'кредит'
 
     def __init__(self, name, account_num, interest_rate, amount_credit):
@@ -46,6 +70,7 @@ class CreditAccountOwners(AccountOwners):
         self.amount_of_credit = amount_credit
 
     def calculation_fees(self):
+        """Метод возвращает сумму процентов за пользование кредитом в месяц"""
         a = self.amount_of_credit / 100
         b = (a * self.interest_rate) / 365
         c = b * 30
@@ -53,7 +78,16 @@ class CreditAccountOwners(AccountOwners):
 
 
 class DebitWithCashbackOwners(DebitAccountOwners):
-    """Класс депозитного счета с кешбеком с расчетом платы банку"""
+    """Класс владельца депозитного счета с кешбеком с расчетом платы банку
+
+    Конструктор принимает:
+     - Унаследовано от класса DebitAccountOwners:
+    name - ФИО клиента (str);
+    account_num - номер счета (str)
+    monthly_fee - плата за обслуживание счета в месяц (int)
+    - Добавлено:
+    cashback (int) - сумма бонусов, возвращаемая клиенту за расчеты с картой
+    """
     type_account = 'депозит с кешбеком'
 
     def __init__(self, name, account_num, monthly_fee, cashback):
@@ -61,12 +95,23 @@ class DebitWithCashbackOwners(DebitAccountOwners):
         self.cashback = cashback
 
     def calculation_fees(self):
+        """Метод возвращает сумму платы за обслуживание счета
+
+        за вычетом суммы кэшбека
+        """
         fees = super().calculation_fees()
         return fees - self.cashback
 
 
 class CellRent:
-    """Класс для банковской ячейки"""
+    """Класс клиента, арендующего банковскую ячейку
+
+    Атрибут класса:
+    type_account - тип аккаунта клиента
+    Конструктор принимает:
+    name - ФИО клиента (str);
+    account_num - номер счета (str)
+    """
     type_account = 'банковская ячейка'
 
     def __init__(self, name, account_num):
@@ -75,63 +120,112 @@ class CellRent:
 
     @classmethod
     def calculation_fees(cls):
+        """Метод возвращает сумму платы за аренду банковской ячейки"""
         return 150
 
 
 class SMSMixin:
     """Отправление клиенту СМС об операции"""
 
-    @staticmethod
-    def send_sms():
-        print('Клиенту отправлено уведомление об операции')
+    @classmethod
+    def send_sms(cls, message):
+        """Метод возвращает уведомление об отправке клиенту СМС
+
+         о проведенной операции вместе с текстом сообщения
+         """
+        print(f'Клиенту отправлено уведомление об операции: {message}')
 
 
 class IndividualWithCard(DebitWithCashbackOwners, SMSMixin):
-    """Класс для физического лица, открывшего депозит
+    """Класс клиента-физического лица, открывшего депозит
 
     с кешбеком с выпуском карты(для примера)
+    Конструктор принимает:
+     - Унаследовано от класса DebitWithCashbackOwners:
+    name - ФИО клиента (str);
+    account_num - номер счета (str)
+    monthly_fee - плата за обслуживание счета в месяц (int)
+    cashback (int) - сумма бонусов, возвращаемая клиенту за расчеты с картой
+    Добавлено:
+    sum (int) - переменная для суммы денег. В данном классе используется
+    в функции, информирующей банк и клиента о проведенной операции по снятию
+    денежных средств
     """
 
     def __init__(self, name, account_num, monthly_fee, cashback, sum):
         super().__init__(name, account_num, monthly_fee, cashback)
         self.sum = sum
 
-    def card_issue(self, type_of_card):
-        print(f'{self.name} выпустил карту {type_of_card}'
-              f' к счету {self.account_num}')
-        SMSMixin.send_sms()
+    def card_issue(self):
+        """Метод выпуска карты по желанию владельца счета.
+
+        Позволяет выбрать тип карты.
+        """
+        answer = str(input('Хотите выпустить карту? yes/no:'))
+        if answer == 'yes':
+            type_of_card = str(input('Какой тип карты вы хотите выпустить?'
+                                     ' Mastercard/Visa: '))
+            print(f'{self.name} выпустил карту {type_of_card}'
+                  f' к счету {self.account_num}')
+            SMSMixin.send_sms(message=f'{self.name}, Ваша карта готова')
+        if answer == 'no':
+            print('Карта к счету не выпускалась')
 
     def withdraw_money(self):
+        """Метод информирует банк и клиента о произведенном снятии денег"""
         print(f'{self.name} снял {self.sum} руб.'
               f' с карты к счету {self.account_num}')
-        SMSMixin.send_sms()
+        SMSMixin.send_sms(message=f'Произведено снятие на сумму'
+                                  f' {self.sum} руб.')
 
 
 class LegalEntityWithCard(CreditAccountOwners, SMSMixin):
-    """Класс для юрлица, открывшего кредитный счет
+    """Класс клиента-юрлица, открывшего кредитный счет
 
-    с выпуском карты (для примера)
+    с выпуском карты (для примера).
+    Конструктор принимает:
+     - Унаследовано от класса CreditAccountOwners:
+    name - ФИО клиента (str);
+    account_num - номер счета (str)
+    interest_rate - процент за пользование кредитом (int)
+    amount_credit - сумма кредита (int)
+    Добавлено:
+    sum (int) - переменная для суммы денег. В данном классе используется
+    в функции, фиксирующей проведенную операцию по движению
+    денежных средств
     """
 
     def __init__(self, name, account_num, interest_rate, amount_credit, sum):
         super().__init__(name, account_num, interest_rate, amount_credit)
         self.sum = sum
 
-    def card_issue(self, type_of_card):
-        print(f'{self.name} выпустил карту {type_of_card}'
-              f' к счету {self.account_num}')
-        SMSMixin.send_sms()
+    def card_issue(self):
+        """Метод выпуска карты по желанию владельца счета.
+
+        Позволяет выбрать тип карты.
+        """
+        answer = str(input('Хотите выпустить карту? yes/no:'))
+        if answer == 'yes':
+            type_of_card = str(input('Какой тип карты вы хотите выпустить?'
+                                     ' Mastercard/Visa: '))
+            print(f'{self.name} выпустил карту {type_of_card}'
+                  f' к счету {self.account_num}')
+            SMSMixin.send_sms(message=f'{self.name}, Ваша карта готова')
+        if answer == 'no':
+            print('Карта к счету не выпускалась')
 
     def withdraw_money(self):
+        """Метод фиксирует информацию о движении денежных средств"""
         print(f'{self.name} перечислил зарплатный фонд'
               f' на сумму {self.sum} руб.'
               f' со счета {self.account_num}')
 
 
 def calculation_fees(account_owners):
-    """Функция формирует список клиетов с номерами счетов,
+    """Функция выводит список клиентов с номерами счетов,
 
-    типами счетов и платой за обслуживание
+    типами счетов, платой за обслуживание, а также общей суммой вознаграждения,
+    причитающегося банку за оказанные услуги
     """
     total = 0
     for account_owner in account_owners:
@@ -147,10 +241,11 @@ def calculation_fees(account_owners):
 
 
 def issued_cards(card_holders):
-    """Список выпущенных карт"""
-    print('Выпущены карты')
+    """Функция для управления выпуском карт к счету"""
+    print('Выпуск карт')
     for card_holder in card_holders:
-        card_holder.card_issue(type_of_card='VISA')
+        print(f'Клиент {card_holder.name}')
+        card_holder.card_issue()
     print('****************************************')
 
 
