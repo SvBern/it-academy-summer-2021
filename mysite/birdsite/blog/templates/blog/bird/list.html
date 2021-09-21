@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% load static %}
+
+{% block title %}
+  {% if category %}{{ category.name }}{% else %}НАШЫ ПТУШКІ{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div id="sidebar">
+    <h3>КАТЭГОРЫІ</h3>
+    <ul>
+      <li {% if not category %}class="selected"{% endif %}>
+        <a href="{% url "blog:bird_list" %}">УСЕ ПТУШКІ</a>
+      </li>
+      {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="sidebar2">
+      <p>Да нас прыляцела ўжо {% total_birds %} птушак </p>
+  </div>
+  <div id="main" class="bird-list">
+    <h1>{% if category %}{{ category.name }}{% else %}{% endif %}</h1>
+    {% for bird in birds %}
+      <div class="item">
+        <a href="{{ bird.get_absolute_url }}">
+          <img src="{% if bird.image %}{{ bird.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="">
+          <audio controls loop="loop">
+            <source src="{% if bird.sound %}{{ bird.sound.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" type="audio/mpeg">
+  <       </audio>
+        </a>
+        <a href="{{ bird.get_absolute_url }}">{{ bird.name }}</a><br>
+      </div>
+    {% endfor %}
+  </div>
+  {% include "pagination.html" with page=birds %}
+{% endblock %}

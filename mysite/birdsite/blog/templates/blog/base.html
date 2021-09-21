@@ -1,0 +1,20 @@
+{% load blog_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static "css/base.css" %}" rel="stylesheet">
+</head>
+<body>
+  <div id="header">
+     <div><img src="../../static/img/7c9fcd73baab698b4e5f72b95a645165.jpg" alt=""></div>
+    <a href="/" class="logo">ПТУШКІ БЕЛАРУСІ</a>
+  </div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
